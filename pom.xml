@@ -10,6 +10,22 @@
     <properties>
         <spring.version>4.3.7.RELEASE</spring.version>
     </properties>
+    
+    <!--配置全局JDK版本-->
+    <profiles>
+        <profile>
+            <id>JDK8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.version>1.8</maven.compiler.version>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
@@ -62,4 +78,18 @@
         </dependency>
 
     </dependencies>
+
+    <!--设置局部JDK版本-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
